@@ -1,0 +1,592 @@
+lista_afds = [ 
+    ("INT",
+    0, 
+    { 
+        (0, 'i'): 1, 
+        (1, 'n'): 2, 
+        (2, 't'): 3 
+    }, 
+    {3} 
+    ), 
+    ("FLOAT", 
+    0, 
+    { 
+        (0, 'f'): 1, 
+        (1, 'l'): 2, 
+        (2, 'o'): 3, 
+        (3, 'a'): 4, 
+        (4, 't'): 5 
+    }, 
+    {5} 
+    ), 
+    ("BOOL", 
+    0, 
+    { 
+        (0, 'b'): 1, 
+        (1, 'o'): 2, 
+        (2, 'o'): 3, 
+        (3, 'l'): 4 
+    }, 
+    {4} 
+    ), 
+    ("VOID", 
+    0, 
+    { 
+        (0, 'v'): 1, 
+        (1, 'o'): 2, 
+        (2, 'i'): 3, 
+        (3, 'd'): 4 
+    }, 
+    {4} 
+    ), 
+    ("IF", 
+    0, 
+    { 
+        (0, 'i'): 1, 
+        (1, 'f'): 2 
+    }, 
+    {2} 
+    ), 
+    ("ELSE", 
+    0, 
+    { 
+        (0, 'e'): 1, 
+        (1, 'l'): 2, 
+        (2, 's'): 3, 
+        (3, 'e'): 4 
+    }, 
+    {4} 
+    ), 
+    ("WHILE", 
+    0, 
+    { 
+        (0, 'w'): 1, 
+        (1, 'h'): 2, 
+        (2, 'i'): 3, 
+        (3, 'l'): 4, 
+        (4, 'e'): 5 
+    }, 
+    {5} 
+    ), 
+    ("FOR", 
+    0, 
+    { 
+        (0, 'f'): 1, 
+        (1, 'o'): 2, 
+        (2, 'r'): 3 
+    }, 
+    {3} 
+    ), 
+    ("READ", 
+    0, 
+    { 
+        (0, 'r'): 1, 
+        (1, 'e'): 2, 
+        (2, 'a'): 3, 
+        (3, 'd'): 4 
+    }, 
+    {4} 
+    ), 
+    ("RETURN", 
+    0, 
+    { 
+        (0, 'r'): 1, 
+        (1, 'e'): 2, 
+        (2, 't'): 3, 
+        (3, 'u'): 4, 
+        (4, 'r'): 5, 
+        (5, 'n'): 6 
+    }, 
+    {6} 
+    ), 
+    ("PRINT", 
+    0, 
+    { 
+        (0, 'p'): 1, 
+        (1, 'r'): 2, 
+        (2, 'i'): 3, 
+        (3, 'n'): 4, 
+        (4, 't'): 5 
+    }, 
+    {5} 
+    ), 
+    ("TRUE", 
+    0, 
+    { 
+        (0, 't'): 1, 
+        (1, 'r'): 2, 
+        (2, 'u'): 3, 
+        (3, 'e'): 4 
+    }, 
+    {4} 
+    ), 
+    ("FALSE", 
+    0, 
+    { 
+        (0, 'f'): 1, 
+        (1, 'a'): 2, 
+        (2, 'l'): 3, 
+        (3, 's'): 4, 
+        (4, 'e'): 5 
+    }, 
+    {5} 
+    ), 
+    ("==", 
+    0, 
+    { 
+        (0, '='): 1, 
+        (1, '='): 2 
+    }, 
+    {2} 
+    ), 
+    ("!=", 
+    0, 
+    { 
+        (0, '!'): 1, 
+        (1, '='): 2 
+    }, 
+    {2} 
+    ), 
+    ("<=", 
+    0, 
+    { 
+        (0, '<'): 1, 
+        (1, '='): 2 
+    }, 
+    {2} 
+    ), 
+    (">=", 
+    0, 
+    { 
+        (0, '>'): 1, 
+        (1, '='): 2 
+    }, 
+    {2} 
+    ), 
+    ("&&", 
+    0, 
+    { 
+        (0, '&'): 1, 
+        (1, '&'): 2 
+    }, 
+    {2} 
+    ), 
+    ("||", 
+    0, 
+    { 
+        (0, '|'): 1, 
+        (1, '|'): 2 
+    }, 
+    {2} 
+    ), 
+    ("=", 
+    0, 
+    { 
+        (0, '='): 1 
+    }, 
+    {1} 
+    ), 
+    ("!", 
+    0, 
+    { 
+        (0, '!'): 1 
+    }, 
+    {1} 
+    ), 
+    ("<", 
+    0, 
+    { 
+        (0, '<'): 1 
+    }, 
+    {1} 
+    ), 
+    (">", 
+    0, 
+    { 
+        (0, '>'): 1 
+    }, 
+    {1} 
+    ), 
+    ("+", 
+    0, 
+    { 
+        (0, '+'): 1 
+    }, 
+    {1} 
+    ), 
+    ("-", 
+    0, 
+    { 
+        (0, '-'): 1 
+    }, 
+    {1} 
+    ), 
+    ("*", 
+    0, 
+    { 
+        (0, '*'): 1 
+    }, 
+    {1} 
+    ), 
+    ("/", 
+    0, 
+    { 
+        (0, '/'): 1 
+    }, 
+    {1} 
+    ), 
+    ("PARENT_LEFT", 
+    0, 
+    { 
+        (0, '('):1 
+    }, 
+    {1} 
+    ), 
+    ("PARENT_RIGHT", 
+    0, 
+    { 
+        (0, ')'): 1 
+    }, 
+    {1} 
+    ), 
+    ("LLAVE_LEFT", 
+    0, 
+    { 
+        (0, '{'): 1 
+    }, 
+    {1} 
+    ), 
+    ("LLAVE_RIGHT", 
+    0, 
+    { 
+        (0, '}'): 1 
+    }, 
+    {1} 
+    ), 
+    ("COMMADOT", 
+    0, 
+    { 
+        (0, ';'): 1 
+    }, 
+    {1} 
+    ), 
+    ("COMMA", 
+    0, 
+    { 
+        (0, ','): 1 
+    }, 
+    {1} 
+    ), 
+    ("STRING", ##Espacio vacio? 
+    0,
+    {
+        (0, '"'): 1,
+        #Minusculas
+        (1, 'a'): 1,
+        (1, 'b'): 1,
+        (1, 'c'): 1,
+        (1, 'd'): 1,
+        (1, 'e'): 1,
+        (1, 'f'): 1,
+        (1, 'g'): 1,
+        (1, 'h'): 1,
+        (1, 'i'): 1,
+        (1, 'j'): 1,
+        (1, 'k'): 1,
+        (1, 'l'): 1,
+        (1, 'm'): 1,
+        (1, 'n'): 1,
+        (1, 'ñ'): 1,
+        (1, 'o'): 1,
+        (1, 'p'): 1,
+        (1, 'q'): 1,
+        (1, 'r'): 1,
+        (1, 's'): 1,
+        (1, 't'): 1,
+        (1, 'u'): 1,
+        (1, 'v'): 1,
+        (1, 'w'): 1,
+        (1, 'x'): 1,
+        (1, 'y'): 1,
+        (1, 'z'): 1,
+        #Mayusculas
+        (1, 'A'): 1,
+        (1, 'B'): 1,
+        (1, 'C'): 1,
+        (1, 'D'): 1,
+        (1, 'E'): 1,
+        (1, 'F'): 1,
+        (1, 'G'): 1,
+        (1, 'H'): 1,
+        (1, 'I'): 1,
+        (1, 'J'): 1,
+        (1, 'K'): 1,
+        (1, 'L'): 1,
+        (1, 'M'): 1,
+        (1, 'N'): 1,
+        (1, 'Ñ'): 1,
+        (1, 'O'): 1,
+        (1, 'P'): 1,
+        (1, 'Q'): 1,
+        (1, 'R'): 1,
+        (1, 'S'): 1,
+        (1, 'T'): 1,
+        (1, 'U'): 1,
+        (1, 'V'): 1,
+        (1, 'W'): 1,
+        (1, 'X'): 1,
+        (1, 'Y'): 1,
+        (1, 'Z'): 1,
+        #Numeros
+        (1, '0'): 1,
+        (1, '1'): 1,
+        (1, '2'): 1,
+        (1, '3'): 1,
+        (1, '4'): 1,
+        (1, '5'): 1,
+        (1, '6'): 1,
+        (1, '7'): 1,
+        (1, '8'): 1,
+        (1, '9'): 1,
+        #Caracteres
+        (1, ' '): 1,
+        (1, '_'): 1,
+        (1, '-'): 1,
+        (1, '"'): 2
+    },
+    {2}
+    ),  
+    ("ID", 
+    0, 
+    {
+        (0, 'a'): 1,
+        (0, 'b'): 1,
+        (0, 'c'): 1,
+        (0, 'd'): 1,
+        (0, 'e'): 1,
+        (0, 'f'): 1,
+        (0, 'g'): 1,
+        (0, 'h'): 1,
+        (0, 'i'): 1,
+        (0, 'j'): 1,
+        (0, 'k'): 1,
+        (0, 'l'): 1,
+        (0, 'm'): 1,
+        (0, 'n'): 1,
+        (0, 'ñ'): 1,
+        (0, 'o'): 1,
+        (0, 'p'): 1,
+        (0, 'q'): 1,
+        (0, 'r'): 1,
+        (0, 's'): 1,
+        (0, 't'): 1,
+        (0, 'u'): 1,
+        (0, 'v'): 1,
+        (0, 'w'): 1,
+        (0, 'x'): 1,
+        (0, 'y'): 1,
+        (0, 'z'): 1,
+        #Mayusculas
+        (0, 'A'): 1,
+        (0, 'B'): 1,
+        (0, 'C'): 1,
+        (0, 'D'): 1,
+        (0, 'E'): 1,
+        (0, 'F'): 1,
+        (0, 'G'): 1,
+        (0, 'H'): 1,
+        (0, 'I'): 1,
+        (0, 'J'): 1,
+        (0, 'K'): 1,
+        (0, 'L'): 1,
+        (0, 'M'): 1,
+        (0, 'N'): 1,
+        (0, 'Ñ'): 1,
+        (0, 'O'): 1,
+        (0, 'P'): 1,
+        (0, 'Q'): 1,
+        (0, 'R'): 1,
+        (0, 'S'): 1,
+        (0, 'T'): 1,
+        (0, 'U'): 1,
+        (0, 'V'): 1,
+        (0, 'W'): 1,
+        (0, 'X'): 1,
+        (0, 'Y'): 1,
+        (0, 'Z'): 1, 
+        #
+        (1, 'a'): 1,
+        (1, 'b'): 1,
+        (1, 'c'): 1,
+        (1, 'd'): 1,
+        (1, 'e'): 1,
+        (1, 'f'): 1,
+        (1, 'g'): 1,
+        (1, 'h'): 1,
+        (1, 'i'): 1,
+        (1, 'j'): 1,
+        (1, 'k'): 1,
+        (1, 'l'): 1,
+        (1, 'm'): 1,
+        (1, 'n'): 1,
+        (1, 'ñ'): 1,
+        (1, 'o'): 1,
+        (1, 'p'): 1,
+        (1, 'q'): 1,
+        (1, 'r'): 1,
+        (1, 's'): 1,
+        (1, 't'): 1,
+        (1, 'u'): 1,
+        (1, 'v'): 1,
+        (1, 'w'): 1,
+        (1, 'x'): 1,
+        (1, 'y'): 1,
+        (1, 'z'): 1,
+        #Mayusculas
+        (1, 'A'): 1,
+        (1, 'B'): 1,
+        (1, 'C'): 1,
+        (1, 'D'): 1,
+        (1, 'E'): 1,
+        (1, 'F'): 1,
+        (1, 'G'): 1,
+        (1, 'H'): 1,
+        (1, 'I'): 1,
+        (1, 'J'): 1,
+        (1, 'K'): 1,
+        (1, 'L'): 1,
+        (1, 'M'): 1,
+        (1, 'N'): 1,
+        (1, 'Ñ'): 1,
+        (1, 'O'): 1,
+        (1, 'P'): 1,
+        (1, 'Q'): 1,
+        (1, 'R'): 1,
+        (1, 'S'): 1,
+        (1, 'T'): 1,
+        (1, 'U'): 1,
+        (1, 'V'): 1,
+        (1, 'W'): 1,
+        (1, 'X'): 1,
+        (1, 'Y'): 1,
+        (1, 'Z'): 1,
+        (1, '0'): 1,
+        (1, '1'): 1,
+        (1, '2'): 1,
+        (1, '3'): 1,
+        (1, '4'): 1,
+        (1, '5'): 1,
+        (1, '6'): 1,
+        (1, '7'): 1,
+        (1, '8'): 1,
+        (1, '9'): 1,
+        (1, '_'): 1,
+    }, 
+    {1}
+    ), 
+    ("NUMERO", 
+    0, 
+    {
+        (0, '0'): 1,
+        (0, '1'): 1, 
+        (0, '2'): 1,
+        (0, '3'): 1,
+        (0, '4'): 1,
+        (0, '5'): 1,
+        (0, '6'): 1,
+        (0, '7'): 1,
+        (0, '8'): 1,
+        (0, '9'): 1,
+        (1, '0'): 1,
+        (1, '1'): 1,
+        (1, '2'): 1,
+        (1, '3'): 1,
+        (1, '4'): 1,
+        (1, '5'): 1,
+        (1, '6'): 1,
+        (1, '7'): 1,
+        (1, '8'): 1,
+        (1, '9'): 1,
+        (1, '.'): 2,
+        (2, '0'): 3,
+        (2, '1'): 3,
+        (2, '2'): 3,
+        (2, '3'): 3,
+        (2, '4'): 3,
+        (2, '5'): 3,
+        (2, '6'): 3,
+        (2, '7'): 3,
+        (2, '8'): 3,
+        (2, '9'): 3,
+        (3, '0'): 3,
+        (3, '1'): 3,
+        (3, '2'): 3,
+        (3, '3'): 3,
+        (3, '4'): 3,
+        (3, '5'): 3,
+        (3, '6'): 3,
+        (3, '7'): 3,
+        (3, '8'): 3,
+        (3, '9'): 3,
+    }, 
+    {1,3}
+    ), 
+    ]
+# MUY IMPORTANTE: EL ORDEN EN QUE SE COLOCAN LOS AFDS EN lista_afds DETERMINA QUE TIPO
+# DE TOKEN SE SELECCIONA CUANDO UN LEXEMA VERIFICA MÁS DE UNO, ES DECIR, SE USA PARA ROMPER
+# EMPATES.
+# EN GENERAL LAS PALABRAS RESERVADAS TOMAN PRECEDENCIA, POR ESO EL ORDEN SUGERIDO.
+
+def lexer_multiples_afds(codigo_fuente):
+    tokens = []
+    pos_actual = 0
+    n = len(codigo_fuente)
+    
+    while pos_actual < n: # recorremos todos los caracteres del código fuente
+        longitud_mejor_match = 0
+        tipo_mejor_match = None
+        lexema_mejor_match = ''
+
+        for afd in lista_afds: # en este ciclo interno, alimentamos el lexema actual a todos los afds
+            
+            tipo, estado_inicial, delta, estados_aceptados = afd
+            estado_actual = estado_inicial
+            pos_lexema_actual = pos_actual # por cada afd, comenzamos desde la posición actual en el código fuente
+                                           # después del último token aceptado
+            ultima_pos_aceptada = -1
+
+            while pos_lexema_actual < n:
+                clave = (estado_actual, codigo_fuente[pos_lexema_actual])
+                print(f"AFD: {tipo}, Estado Actual: {estado_actual}, Caracter: '{codigo_fuente[pos_lexema_actual]}', Clave: {clave}")
+                if clave not in delta:
+                    break # salimos por el estado trampa
+                estado_actual = delta[clave]
+                pos_lexema_actual += 1 # avanzamos hasta llegar al estado trampa del afd actual
+                if estado_actual in estados_aceptados:
+                    ultima_pos_aceptada = pos_lexema_actual
+
+            if ultima_pos_aceptada > pos_actual:
+                longitud_lexema_actual = ultima_pos_aceptada - pos_actual
+                if longitud_lexema_actual > longitud_mejor_match: # principio maximal munch, lexema más largo gana
+                                                                  # si son iguales, se mantiene el actual
+                                                                  # por eso importa el orden en lista_afds
+                    longitud_mejor_match = longitud_lexema_actual
+                    tipo_mejor_match = tipo
+                    lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
+
+        if longitud_mejor_match == 0:
+            raise ValueError(f"Carácter Inesperado en posición {pos_actual}")
+
+        tokens.append((tipo_mejor_match, lexema_mejor_match))
+        pos_actual += longitud_mejor_match
+
+    tokens.append(("EOF", "EOF"))
+    return tokens
+    
+if __name__ == "__main__":
+    with open("codigo.txt", "r") as f:
+        codigo = f.read()
+    print(codigo)
+    
+    tokens = lexer_multiples_afds(codigo)
+    print(tokens)
