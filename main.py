@@ -557,14 +557,16 @@ def lexer_multiples_afds(codigo_fuente):
 
             while pos_lexema_actual < n:
                 clave = (estado_actual, codigo_fuente[pos_lexema_actual])
-                print(f"AFD: {tipo}, Estado Actual: {estado_actual}, Caracter: '{codigo_fuente[pos_lexema_actual]}', Clave: {clave}")
+                print(f"AFD: {tipo}, Estado Actual: {estado_actual}, Caracter: '{codigo_fuente[pos_lexema_actual]}', Clave: {clave} Posicion actual: {pos_actual}" )
                 if clave not in delta:
                     break # salimos por el estado trampa
                 estado_actual = delta[clave]
                 pos_lexema_actual += 1 # avanzamos hasta llegar al estado trampa del afd actual
                 if estado_actual in estados_aceptados:
-                    ultima_pos_aceptada = pos_lexema_actual
+                    print(f"AFD: {tipo} Acepta Lexema: '{codigo_fuente[pos_actual:pos_lexema_actual]}'")
+                    ultima_pos_aceptada = pos_lexema_actual 
 
+            print(f"Posicion actual: {pos_actual}, Última Posición Aceptada: {ultima_pos_aceptada}")
             if ultima_pos_aceptada > pos_actual:
                 longitud_lexema_actual = ultima_pos_aceptada - pos_actual
                 if longitud_lexema_actual > longitud_mejor_match: # principio maximal munch, lexema más largo gana
@@ -573,11 +575,13 @@ def lexer_multiples_afds(codigo_fuente):
                     longitud_mejor_match = longitud_lexema_actual
                     tipo_mejor_match = tipo
                     lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
+                    print(longitud_mejor_match, tipo_mejor_match, lexema_mejor_match)
 
         if longitud_mejor_match == 0:
             raise ValueError(f"Carácter Inesperado en posición {pos_actual}")
 
         tokens.append((tipo_mejor_match, lexema_mejor_match))
+        print(f"Token Agregado: ({tipo_mejor_match}, '{lexema_mejor_match}')")
         pos_actual += longitud_mejor_match
 
     tokens.append(("EOF", "EOF"))
