@@ -131,7 +131,7 @@ lista_afds = [
     }, 
     {5} 
     ), 
-    ("==", 
+    ("IgualQue", 
     0, 
     { 
         (0, '='): 1, 
@@ -139,7 +139,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("!=", 
+    ("Distinto", 
     0, 
     { 
         (0, '!'): 1, 
@@ -147,7 +147,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("<=", 
+    ("MenorIgual", 
     0, 
     { 
         (0, '<'): 1, 
@@ -155,7 +155,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    (">=", 
+    ("MayorIgual", 
     0, 
     { 
         (0, '>'): 1, 
@@ -163,7 +163,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("&&", 
+    ("AND", 
     0, 
     { 
         (0, '&'): 1, 
@@ -171,7 +171,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("||", 
+    ("OR", 
     0, 
     { 
         (0, '|'): 1, 
@@ -179,61 +179,69 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("=", 
+    ("IGUAL", 
     0, 
     { 
         (0, '='): 1 
     }, 
     {1} 
     ), 
-    ("!", 
+    ("DISTINTO", 
     0, 
     { 
         (0, '!'): 1 
     }, 
     {1} 
     ), 
-    ("<", 
+    ("MENOR", 
     0, 
     { 
         (0, '<'): 1 
     }, 
     {1} 
     ), 
-    (">", 
+    ("MAYOR", 
     0, 
     { 
         (0, '>'): 1 
     }, 
     {1} 
     ), 
-    ("+", 
+    ("SUMA", 
     0, 
     { 
         (0, '+'): 1 
     }, 
     {1} 
     ), 
-    ("-", 
+    ("RESTA", 
     0, 
     { 
         (0, '-'): 1 
     }, 
     {1} 
     ), 
-    ("*", 
+    ("MULT", 
     0, 
     { 
         (0, '*'): 1 
     }, 
     {1} 
     ), 
-    ("/", 
+    ("DIV", 
     0, 
     { 
         (0, '/'): 1 
     }, 
     {1} 
+    ),
+    ("WH",
+     0,
+     {
+         (0, ' '):1,
+         (0, '\n'):1
+     },
+     {1}
     ), 
     ("PARENT_LEFT", 
     0, 
@@ -277,7 +285,7 @@ lista_afds = [
     }, 
     {1} 
     ), 
-    ("STRING", ##Espacio vacio? 
+    ("STRING", 
     0,
     {
         (0, '"'): 1,
@@ -557,16 +565,16 @@ def lexer_multiples_afds(codigo_fuente):
 
             while pos_lexema_actual < n:
                 clave = (estado_actual, codigo_fuente[pos_lexema_actual])
-                print(f"AFD: {tipo}, Estado Actual: {estado_actual}, Caracter: '{codigo_fuente[pos_lexema_actual]}', Clave: {clave} Posicion actual: {pos_actual}" )
+                
                 if clave not in delta:
                     break # salimos por el estado trampa
                 estado_actual = delta[clave]
                 pos_lexema_actual += 1 # avanzamos hasta llegar al estado trampa del afd actual
                 if estado_actual in estados_aceptados:
-                    print(f"AFD: {tipo} Acepta Lexema: '{codigo_fuente[pos_actual:pos_lexema_actual]}'")
+                    
                     ultima_pos_aceptada = pos_lexema_actual 
 
-            print(f"Posicion actual: {pos_actual}, Última Posición Aceptada: {ultima_pos_aceptada}")
+            
             if ultima_pos_aceptada > pos_actual:
                 longitud_lexema_actual = ultima_pos_aceptada - pos_actual
                 if longitud_lexema_actual > longitud_mejor_match: # principio maximal munch, lexema más largo gana
@@ -575,7 +583,7 @@ def lexer_multiples_afds(codigo_fuente):
                     longitud_mejor_match = longitud_lexema_actual
                     tipo_mejor_match = tipo
                     lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
-                    print(longitud_mejor_match, tipo_mejor_match, lexema_mejor_match)
+                    
 
         if longitud_mejor_match == 0:
             raise ValueError(f"Carácter Inesperado en posición {pos_actual}")
