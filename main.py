@@ -598,7 +598,6 @@ def lexer_multiples_afds(codigo_fuente):
 if __name__ == "__main__":
     with open("codigo.txt", "r") as f:
         codigo = f.read()
-    print(codigo)
     
     tokens = lexer_multiples_afds(codigo)
     print(tokens)

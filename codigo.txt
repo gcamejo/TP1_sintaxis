@@ -1,4 +1,19 @@
-
-int suma (int a, int b){
-    return a + b
+hola = "Hola mundo"
+float x = 5.555;
+bool bandera = true;
+int suma ( int a , int b ) {
+    return a + b ;
+}
+int main ( ) {
+    int y = suma ( x , 3 ) ;
+    if ( y > 10 ) {
+        print ( y ) ;
+    } else {
+        print ( 0 ) ;
+    } while ( y > 0 ) {
+        y = y - 1 ;
+    }
+    for ( y = 0 ; y < 10 ; y = y + 1 ) {
+        print ( y ) ;
+    }
 }
