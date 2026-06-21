@@ -1,0 +1,18 @@
+vector = (10,34,23,67,45,9,12);
+int main () {
+    int ef = 0
+    int ev = 0
+    int vaux = 0
+    int i = 0
+    
+    for ef > 6 {
+        i = ef + 1;
+        for ev > 9 {
+            if vector(ef) > vector(ev) {
+                vaux = vector(ef);
+                vector(ef) = vector(ev);
+                vector(ev) = vaux;
+            }
+        }
+    }
+}

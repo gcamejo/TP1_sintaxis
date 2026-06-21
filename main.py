@@ -131,7 +131,7 @@ lista_afds = [
     }, 
     {5} 
     ), 
-    ("IgualQue", 
+    ("IGUAL", 
     0, 
     { 
         (0, '='): 1, 
@@ -139,7 +139,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("Distinto", 
+    ("DISTINTO", 
     0, 
     { 
         (0, '!'): 1, 
@@ -147,7 +147,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("MenorIgual", 
+    ("MENOR_IGUAL", 
     0, 
     { 
         (0, '<'): 1, 
@@ -155,7 +155,7 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("MayorIgual", 
+    ("MAYOR_IGUAL", 
     0, 
     { 
         (0, '>'): 1, 
@@ -179,14 +179,14 @@ lista_afds = [
     }, 
     {2} 
     ), 
-    ("IGUAL", 
+    ("ASIGNACION", 
     0, 
     { 
         (0, '='): 1 
     }, 
     {1} 
     ), 
-    ("DISTINTO", 
+    ("NOT", 
     0, 
     { 
         (0, '!'): 1 
@@ -516,28 +516,19 @@ lista_afds = [
         (1, '8'): 1,
         (1, '9'): 1,
         (1, '.'): 2,
-        (2, '0'): 3,
-        (2, '1'): 3,
-        (2, '2'): 3,
-        (2, '3'): 3,
-        (2, '4'): 3,
-        (2, '5'): 3,
-        (2, '6'): 3,
-        (2, '7'): 3,
-        (2, '8'): 3,
-        (2, '9'): 3,
-        (3, '0'): 3,
-        (3, '1'): 3,
-        (3, '2'): 3,
-        (3, '3'): 3,
-        (3, '4'): 3,
-        (3, '5'): 3,
-        (3, '6'): 3,
-        (3, '7'): 3,
-        (3, '8'): 3,
-        (3, '9'): 3,
+        (2, '0'): 2,
+        (2, '1'): 2,
+        (2, '2'): 2,
+        (2, '3'): 2,
+        (2, '4'): 2,
+        (2, '5'): 2,
+        (2, '6'): 2,
+        (2, '7'): 2,
+        (2, '8'): 2,
+        (2, '9'): 2,
+        
     }, 
-    {1,3}
+    {1,2}
     ), 
     ]
 # MUY IMPORTANTE: EL ORDEN EN QUE SE COLOCAN LOS AFDS EN lista_afds DETERMINA QUE TIPO
@@ -549,14 +540,13 @@ def lexer_multiples_afds(codigo_fuente):
     tokens = []
     pos_actual = 0
     n = len(codigo_fuente)
-    
+
     while pos_actual < n: # recorremos todos los caracteres del código fuente
         longitud_mejor_match = 0
         tipo_mejor_match = None
         lexema_mejor_match = ''
 
         for afd in lista_afds: # en este ciclo interno, alimentamos el lexema actual a todos los afds
-            
             tipo, estado_inicial, delta, estados_aceptados = afd
             estado_actual = estado_inicial
             pos_lexema_actual = pos_actual # por cada afd, comenzamos desde la posición actual en el código fuente
@@ -565,16 +555,13 @@ def lexer_multiples_afds(codigo_fuente):
 
             while pos_lexema_actual < n:
                 clave = (estado_actual, codigo_fuente[pos_lexema_actual])
-                
                 if clave not in delta:
                     break # salimos por el estado trampa
                 estado_actual = delta[clave]
                 pos_lexema_actual += 1 # avanzamos hasta llegar al estado trampa del afd actual
                 if estado_actual in estados_aceptados:
-                    
-                    ultima_pos_aceptada = pos_lexema_actual 
+                    ultima_pos_aceptada = pos_lexema_actual
 
-            
             if ultima_pos_aceptada > pos_actual:
                 longitud_lexema_actual = ultima_pos_aceptada - pos_actual
                 if longitud_lexema_actual > longitud_mejor_match: # principio maximal munch, lexema más largo gana
@@ -583,13 +570,11 @@ def lexer_multiples_afds(codigo_fuente):
                     longitud_mejor_match = longitud_lexema_actual
                     tipo_mejor_match = tipo
                     lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
-                    
 
         if longitud_mejor_match == 0:
             raise ValueError(f"Carácter Inesperado en posición {pos_actual}")
 
         tokens.append((tipo_mejor_match, lexema_mejor_match))
-        print(f"Token Agregado: ({tipo_mejor_match}, '{lexema_mejor_match}')")
         pos_actual += longitud_mejor_match
 
     tokens.append(("EOF", "EOF"))
@@ -598,6 +583,7 @@ def lexer_multiples_afds(codigo_fuente):
 if __name__ == "__main__":
     with open("codigo.txt", "r") as f:
         codigo = f.read()
-    
+        
     tokens = lexer_multiples_afds(codigo)
-    print(tokens)
+    for token in tokens:
+        print(token)
