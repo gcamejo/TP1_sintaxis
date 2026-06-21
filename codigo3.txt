@@ -4,14 +4,14 @@ int main(){
     int primero = 0;
     int ultimo = 9;
     int vele = -1;
-    while numbuscar >= vector(primero) && buscar <= pvector(ultimo) && vsenial == 0{
+    while (numbuscar >= vector(primero) && buscar <= pvector(ultimo) && vsenial == 0){
         central = (primero + ultimo)//2;
-        if numbuscar == vector(central){
+        if (numbuscar == vector(central)){
             vele = central;
             vsenial = 1;
         }
         else{
-            if vector(central) > pbuscar{
+            if (vector(central) > pbuscar){
                 ultimo = central - 1;
             }
             else{
