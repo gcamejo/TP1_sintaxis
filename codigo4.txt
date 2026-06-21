@@ -1,0 +1,12 @@
+int main(){
+    archivo = read("archivo.txt","r");
+    if archivo == 1 {
+        print("No se pudo leer archivo");
+    }
+    if archivo == 2 {
+        print("El archivo esta vacio")
+    }
+    if archivo == 3 {
+        print("Linea vacia")
+    }
+}
