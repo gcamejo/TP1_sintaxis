@@ -531,42 +531,35 @@ lista_afds = [
     {1,2}
     ), 
     ]
-# MUY IMPORTANTE: EL ORDEN EN QUE SE COLOCAN LOS AFDS EN lista_afds DETERMINA QUE TIPO
-# DE TOKEN SE SELECCIONA CUANDO UN LEXEMA VERIFICA MÁS DE UNO, ES DECIR, SE USA PARA ROMPER
-# EMPATES.
-# EN GENERAL LAS PALABRAS RESERVADAS TOMAN PRECEDENCIA, POR ESO EL ORDEN SUGERIDO.
 
 def lexer_multiples_afds(codigo_fuente):
     tokens = []
     pos_actual = 0
     n = len(codigo_fuente)
 
-    while pos_actual < n: # recorremos todos los caracteres del código fuente
+    while pos_actual < n: 
         longitud_mejor_match = 0
         tipo_mejor_match = None
         lexema_mejor_match = ''
 
-        for afd in lista_afds: # en este ciclo interno, alimentamos el lexema actual a todos los afds
+        for afd in lista_afds:
             tipo, estado_inicial, delta, estados_aceptados = afd
             estado_actual = estado_inicial
-            pos_lexema_actual = pos_actual # por cada afd, comenzamos desde la posición actual en el código fuente
-                                           # después del último token aceptado
+            pos_lexema_actual = pos_actual 
             ultima_pos_aceptada = -1
 
             while pos_lexema_actual < n:
                 clave = (estado_actual, codigo_fuente[pos_lexema_actual])
                 if clave not in delta:
-                    break # salimos por el estado trampa
+                    break 
                 estado_actual = delta[clave]
-                pos_lexema_actual += 1 # avanzamos hasta llegar al estado trampa del afd actual
+                pos_lexema_actual += 1
                 if estado_actual in estados_aceptados:
                     ultima_pos_aceptada = pos_lexema_actual
 
             if ultima_pos_aceptada > pos_actual:
                 longitud_lexema_actual = ultima_pos_aceptada - pos_actual
-                if longitud_lexema_actual > longitud_mejor_match: # principio maximal munch, lexema más largo gana
-                                                                  # si son iguales, se mantiene el actual
-                                                                  # por eso importa el orden en lista_afds
+                if longitud_lexema_actual > longitud_mejor_match:
                     longitud_mejor_match = longitud_lexema_actual
                     tipo_mejor_match = tipo
                     lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
@@ -579,7 +572,9 @@ def lexer_multiples_afds(codigo_fuente):
 
     tokens.append(("EOF", "EOF"))
     return tokens
-    
+
+# Cambiar el nombre del archivo para ejecutar las distintas pruebas:
+# codigo1.txt, codigo2.txt, ..., codigo10.txt
 if __name__ == "__main__":
     with open("codigo.txt", "r") as f:
         codigo = f.read()
