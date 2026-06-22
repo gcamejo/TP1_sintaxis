@@ -8,7 +8,7 @@ int main () {
     
     for (ef > 6) {
         i = ef + 1;
-        for (ev > 9) {
+        for (ev = 0 ; ev > 9 ; ev = ev + 1) {
             if (vector(ef) > vector(ev)) {
                 vaux = vector(ef);
                 vector(ef) = vector(ev);

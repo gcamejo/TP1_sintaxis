@@ -1,0 +1,32 @@
+int main() {
+    int limite;
+    int n;
+    bool es_primo;
+    int i;
+    int primos_encontrados;
+
+    limite = 20;
+    n = 2;
+    primos_encontrados = 0;
+
+    while (n <= limite) {
+        es_primo = true;
+        i = 2;
+        while (i * i <= n) {
+            int temp;
+            temp = n;
+            while (temp >= i) {
+                temp = temp - i;
+            }
+            if (temp == 0) {
+                es_primo = false;
+            }
+            i = i + 1;
+        }
+        if (es_primo == true) {
+            primos_encontrados = primos_encontrados + 1;
+        }
+        n = n + 1;
+    }
+    return primos_encontrados;
+}

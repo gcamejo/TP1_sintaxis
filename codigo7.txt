@@ -1,0 +1,14 @@
+int main() {
+    int m;
+    int answer;
+    
+    m = 6;
+    answer = 1;
+    
+    while (m > 0):
+        answer = answer * m;
+        m = m - 1;
+    
+    
+    return answer;
+}
