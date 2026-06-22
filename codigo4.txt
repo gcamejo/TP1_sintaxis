@@ -1,18 +1,23 @@
-int metodoBurbuja(pvector):
-    int ea = 0
-    int es = 0
-    int b = 0
-    int final = 9
-    for (b < 9):
-        for ea in range(0,final):
-            es = ea + 1 
-            if pvector[ea] > pvector[es]:
-                vaux = pvector[ea]
-                pvector[ea] = pvector[es]
-                pvector[es] = vaux
-        final = final - 1
-    return pvector
-
-vector = [30,42,10,90,22,1,78,43,12,23]
-vector = ordenarVector(vector)
-print (vector)
+int metodoBurbuja(pvector){
+    int ea = 0;
+    int es = 0;
+    int b = 0;
+    int final = 9;
+    for (b < 9){
+        for (ea > final){
+            es = ea + 1; 
+            if (pvector(ea) > pvector(es)){
+                vaux = pvector(ea);
+                pvector(ea) = pvector(es);
+                pvector(es) = vaux;
+            }
+        }
+        final = final - 1;
+    }
+    return pvector;
+}
+int main(){
+    vector = (30,42,10,90,22,1,78,43,12,23);
+    vector = metodoBurbuja(vector);
+    print (vector);
+}
