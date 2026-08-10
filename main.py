@@ -565,11 +565,12 @@ def lexer_multiples_afds(codigo_fuente):
                     lexema_mejor_match = codigo_fuente[pos_actual:ultima_pos_aceptada]
 
         if longitud_mejor_match == 0:
-            raise ValueError(f"Carácter Inesperado en posición {pos_actual}")
-
-        tokens.append((tipo_mejor_match, lexema_mejor_match))
+            caracter = repr(codigo_fuente[pos_actual])
+            raise ValueError(f"Carácter inesperado {caracter} en la posición {pos_actual}")
+        if tipo_mejor_match != "WH":
+            tokens.append((tipo_mejor_match, lexema_mejor_match))
+            
         pos_actual += longitud_mejor_match
-
     tokens.append(("EOF", "EOF"))
     return tokens
 
