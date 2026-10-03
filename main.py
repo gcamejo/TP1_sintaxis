@@ -577,7 +577,7 @@ def lexer_multiples_afds(codigo_fuente):
 # Cambiar el nombre del archivo para ejecutar las distintas pruebas:
 # codigo1.txt, codigo2.txt, ..., codigo10.txt
 if __name__ == "__main__":
-    with open("codigo.txt", "r") as f:
+    with open("codigo10.txt", "r") as f:
         codigo = f.read()
         
     tokens = lexer_multiples_afds(codigo)
